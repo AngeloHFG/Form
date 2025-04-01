@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesce d'Aprile</title>
+    <style>
+        #fish {
+            position: absolute;
+            width: 600px; /* Aumentato da 200px a 600px */
+            height: 300px; /* Aumentato da 100px a 300px */
+            background: url('https://th.bing.com/th/id/OIP.xRrB_f7LSd3AfjjqYR6pDAHaEK?rs=1&pid=ImgDetMain') no-repeat center center;
+            background-size: contain;
+        }
+        #message {
+            position: absolute;
+            top: 320px; /* Posizionato sotto il pesce */
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="fish"></div>
+    <div id="message">Pesce d'Aprile! 😂</div>
+    <script>
+        const fish = document.getElementById('fish');
+        let direction = -1; 
+        let position = window.innerWidth - 600; 
+
+        function moveFish() {
+            position += 5 * direction;
+            fish.style.left = position + 'px';
+
+            if (position > window.innerWidth - 600 || position < 0) {
+                direction *= -1;
+            }
+
+            requestAnimationFrame(moveFish);
+        }
+
+        moveFish();
+    </script>
+</body>
+</html>
